@@ -46,12 +46,12 @@ public class CreateAudit {
 		frame.getContentPane().setLayout(null);
 
 		projectManagerTF = new JTextField();
-		projectManagerTF.setBounds(204, 32, 130, 26);
+		projectManagerTF.setBounds(204, 70, 130, 26);
 		frame.getContentPane().add(projectManagerTF);
 		projectManagerTF.setColumns(10);
 
 		projectNameTF = new JTextField();
-		projectNameTF.setBounds(204, 70, 130, 26);
+		projectNameTF.setBounds(204, 32, 130, 26);
 		frame.getContentPane().add(projectNameTF);
 		projectNameTF.setColumns(10);
 

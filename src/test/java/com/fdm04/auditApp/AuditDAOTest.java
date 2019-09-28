@@ -1,16 +1,15 @@
 package com.fdm04.auditApp;
 
-import junit.framework.Test;
-import junit.framework.TestCase;
-import junit.framework.TestSuite;
+
 import com.fdm04.auditApp.database.AuditDAO;
 import com.fdm04.auditApp.database.DBconnectionManager;
 import com.fdm04.auditApp.model.Audit;
-
+import static junit.framework.TestCase.assertEquals;
 import java.sql.Connection;
 import java.sql.SQLException;
+import org.junit.Before;
+import org.junit.Test;
 
-import static junit.framework.TestCase.assertEquals;
 
 public class AuditDAOTest {
 
@@ -25,10 +24,7 @@ public class AuditDAOTest {
     public void createAudit(){
 
         try{
-            //Need to investigate why score has to be set
-            //in order for it to pass this test
-            //this should open an audit with a score of 100
-
+            
             Connection connection = dbcmg.getConnection();
 
             AuditDAO auditDAO = new AuditDAO(connection);
@@ -52,7 +48,7 @@ public class AuditDAOTest {
     }
 
 
-    @Test
+    @org.junit.Test
     public void findAudit() {
 
         try {
@@ -76,7 +72,7 @@ public class AuditDAOTest {
 
     }
 
-    @Test
+    @org.junit.Test
     public void deleteAudit(){
 
         try {
@@ -97,7 +93,7 @@ public class AuditDAOTest {
 
     }
 
-    @Test
+    @org.junit.Test
     public void updateAudit(){
 
         try{
