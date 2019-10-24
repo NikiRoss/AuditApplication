@@ -26,8 +26,6 @@ public class Login {
 	private JTextField username;
 	private JPasswordField password;
 	
-	
-
 	public Login() { 
 		
 	}
@@ -38,7 +36,7 @@ public class Login {
 		initialize();
 	}
 
-
+	// Method for creating frame and all its components
 	public void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 375, 300);
@@ -47,60 +45,58 @@ public class Login {
 		frame.getContentPane().setBackground(Color.lightGray);
 		frame.getContentPane().setLayout(null);
 	
-		
+		/*
+		 * This button calls the verify user method from UsersDAO and logs in a
+		 * registered user or provides and error message if the users credentials are
+		 * not verified
+		 */		
 		JButton loginBtn = new JButton("Login");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				
-				String uname = username.getText();
-				
-				@SuppressWarnings("deprecation")
-				String pwd = password.getText();
-				
-				boolean result = dao.verifyUser(uname, pwd);
-				
+				String uname = username.getText();				
+				char[] pwd = password.getPassword();				
+				boolean result = dao.verifyUser(uname, pwd);			
 				if (result) {
 					CreateAudit createAudit = new CreateAudit(connection);
 					createAudit.frame.setVisible(true);
+					frame.dispose();
 				
 				}else {
 					JOptionPane.showMessageDialog(null, "Invalid details entered");					
 				}	
-			}
-			
+			}		
 		});
-		
 		
 		loginBtn.setBounds(168, 155, 117, 29);
 		frame.getContentPane().add(loginBtn);
 		
+		// Descriptor for username text field
 		JLabel unameLbl = new JLabel("Username");
 		unameLbl.setBounds(37, 55, 91, 16);
 		frame.getContentPane().add(unameLbl);
 		
-		JLabel pwdLbl = new JLabel("Password");
-		pwdLbl.setBounds(37, 104, 61, 16);
-		frame.getContentPane().add(pwdLbl);
-		
+		// Username text field
 		username = new JTextField();
 		username.setBounds(155, 50, 138, 26);
 		frame.getContentPane().add(username);
 		username.setColumns(10);
 		
+		// Descriptor for password text field
+		JLabel pwdLbl = new JLabel("Password");
+		pwdLbl.setBounds(37, 104, 61, 16);
+		frame.getContentPane().add(pwdLbl);
+		
+		// Password text field
 		password = new JPasswordField();
 		password.setBounds(155, 99, 138, 26);
 		frame.getContentPane().add(password);
-		password.setColumns(10);
+		password.setColumns(10);	
 	}
 
-	
-	
-	
-	
-	
 	public static void main(String[] args) {
 		
-		final DBconnectionManager dbmg = new DBconnectionManager("localhost:3306", "AuditApplication", "root", "efil4zaggin");
+		final DBconnectionManager dbmg = new DBconnectionManager("localhost:3306", "AuditApplication", "root", "efil4zaggin");//ADD TO PROPERTY FILE OR CONSTANTS
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {

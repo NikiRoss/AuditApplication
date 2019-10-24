@@ -9,8 +9,8 @@ public class DBconnectionManager {
 	
 	public String url;
 	public Properties properties;
-	
-	
+		
+	// DB connection properties
 	public DBconnectionManager(String host, String dbName, String username, String password) {
 		
 		this.url = "jdbc:mysql://"+host+"/"+dbName;
@@ -24,6 +24,4 @@ public class DBconnectionManager {
 		return DriverManager.getConnection(this.url, this.properties);
 	}
 	
-	
-
 }

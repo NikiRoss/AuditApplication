@@ -3,7 +3,6 @@ package com.fdm04.auditApp.database;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import com.fdm04.auditApp.gui.Login;
 import com.fdm04.auditApp.model.Audit;
 import com.fdm04.auditApp.model.Users;
 
@@ -40,8 +39,6 @@ public class Main {
 
 }
 
-//Login login = new Login(connection);
-//login.initialize();
 
 
 

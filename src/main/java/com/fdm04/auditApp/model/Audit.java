@@ -14,7 +14,6 @@ public class Audit implements DataTransferObject{
 	private String summary;
 	private ArrayList<String> categories = new ArrayList<String>();
 
-
 	public Audit() {
 		
 		this.id = id;
@@ -29,76 +28,61 @@ public class Audit implements DataTransferObject{
 		categories.add("RAMS");
 	}
 
-
 	public int getId() {
 		return id;
 	}
-
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-
 	public double getScore() {
 		return score;
 	}
-
 
 	public void setScore(double score) {
 		this.score = score;
 	}
 
-
 	public String getProjectName() {
 		return projectName;
 	}
-
 
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
 	}
 
-
 	public String getProjectManager() {
 		return projectManager;
 	}
-
 
 	public void setProjectManager(String projectManager) {
 		this.projectManager = projectManager;
 	}
 
-
 	public String getAuditor() {
 		return auditor;
 	}
-
 
 	public void setAuditor(String auditor) {
 		this.auditor = auditor;
 	}
 
-
 	public String getSummary() {
 		return summary;
 	}
-
 
 	public void setSummary(String summary) {
 		this.summary = summary;
 	}
 
-
 	public ArrayList<String> getCategories() {
 		return categories;
 	}
 
-
 	public void setCategories(ArrayList<String> categories) {
 		this.categories = categories;
 	}
-
 
 	@Override
 	public String toString() {
@@ -106,8 +90,4 @@ public class Audit implements DataTransferObject{
 				+ projectManager + ", auditor=" + auditor + ", summary=" + summary + ", categories=" + categories + "]";
 	}
 	
-	
-	
-	
-
 }

@@ -11,20 +11,20 @@ import com.fdm04.auditApp.database.util.DataAccessObject;
 import com.fdm04.auditApp.model.Audit;
 
 public class AuditDAO extends DataAccessObject<Audit>{
-	
-	
+		
 	private static String INSERT = "INSERT INTO Audits (ProjectName, ProjectManager, Auditor, Score) VALUES (?, ?, ?, ?)";
 	private static String UPDATE = "UPDATE Audits SET ProjectName = ?, ProjectManager = ?, Auditor = ?, Summary = ?, Score = ? WHERE id = ?";
 	private static String GET = "SELECT id, ProjectName, ProjectManager, Auditor, Summary, Score FROM Audits WHERE id = ?";
 	private static String ALL = "SELECT * FROM Audits";
 	private static String DELETE = "DELETE FROM Audits WHERE id = ?";
-	
+	private static String GETID = "SELECT id, ProjectName, ProjectManager, Auditor, Summary, Score FROM Audits"
+			+ " WHERE ProjectName = ? AND ProjectManager = ? AND Auditor = ? order by id desc limit 1";	
 	
 	public AuditDAO(Connection connection) {
 		super(connection);
 	}
 
-
+	// Method used to create and commit a new audit to the DB
 	@Override
 	public Audit create(Audit dto) {
 		
@@ -34,39 +34,35 @@ public class AuditDAO extends DataAccessObject<Audit>{
             statement.setString(3, dto.getAuditor());
             statement.setDouble(4, dto.getScore());
             statement.execute();
-            return null;
+            return null; 
             
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
-
         }
 	}
 
-
+	// Method used to change or update existing audit details and commit to DB
 	@Override
 	public Audit update(Audit dto) {
 		
-		Audit audit = null;
         try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);) {
             statement.setString(1, dto.getProjectName());
             statement.setString(2, dto.getProjectManager());
             statement.setString(3, dto.getAuditor());
             statement.setString(4, dto.getSummary());
             statement.setDouble(5, dto.getScore());
-            statement.setInt(6, dto.getId());
-            statement.execute();
-            audit = this.findById(dto.getId());
-
+            statement.setInt(6, dto.getId());           
+            statement.executeUpdate(); 
+            
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
-        return audit;
+        return this.findById(dto.getId());
 	}
 
-
+	// Method used to find an audit by its unique ID
 	@Override
 	public Audit findById(int id) {
 		
@@ -81,8 +77,8 @@ public class AuditDAO extends DataAccessObject<Audit>{
                 audit.setScore(rs.getDouble("Score"));
                 audit.setAuditor(rs.getString("Auditor"));
                 audit.setSummary(rs.getString("Summary"));
-
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
@@ -90,7 +86,7 @@ public class AuditDAO extends DataAccessObject<Audit>{
         return audit;
 	}
 
-
+	// Method used to return all audits stored in the DB
 	@Override
 	public List<Audit> findAll() {
 		
@@ -105,17 +101,16 @@ public class AuditDAO extends DataAccessObject<Audit>{
                 audit.setScore(rs.getDouble("Score"));
                 audit.setAuditor(rs.getString("Auditor"));
                 audits.add(audit);
-
             }
+            
         } catch (SQLException e) {
             e.printStackTrace();
             throw new RuntimeException(e);
         }
-
         return audits;
 	}
 
-
+	// Method used to delete an audit from the DB
 	@Override
 	public void delete(int id) {
 		try (PreparedStatement statement = this.connection.prepareStatement(DELETE)) {
@@ -127,4 +122,31 @@ public class AuditDAO extends DataAccessObject<Audit>{
             throw new RuntimeException(e);
         }		
 	}
+	
+	/*
+	 * Method used to get the ID of a newly created audit this is required to allow
+	 * changes to the audit to be to DB straight after creating
+	 */
+	public Audit getID(Audit audit) {
+		
+		try (PreparedStatement statement = this.connection.prepareStatement(GETID);){
+			statement.setString(1, audit.getProjectName());
+			statement.setString(2, audit.getProjectManager());
+			statement.setString(3, audit.getAuditor());
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                audit.setId(rs.getInt("id"));
+                audit.setProjectName(rs.getString("ProjectName"));
+                audit.setProjectManager(rs.getString("ProjectManager"));
+                audit.setScore(rs.getDouble("Score"));
+                audit.setAuditor(rs.getString("Auditor"));     	
+            }	
+            
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
+		}
+			return audit;
+	}
+	
 }

@@ -9,7 +9,6 @@ import java.util.List;
 import com.fdm04.auditApp.database.util.DataAccessObject;
 import com.fdm04.auditApp.model.Users;
 
-
 public class UsersDAO extends DataAccessObject<Users> {
 	
 	private static String INSERT = "INSERT INTO Users (Username, Password) VALUES (?, ?)";
@@ -19,18 +18,16 @@ public class UsersDAO extends DataAccessObject<Users> {
 	private static String DELETE = "DELETE FROM Users WHERE id = ?";
 	private static String VERIFY = "SELECT Username, Password FROM Users";
 	
-
 	public UsersDAO(Connection connection) {
 		super(connection);
 		
 	}
 	
-
+	// Method to create and commit new users to DB
 	@Override
 	public Users create(Users dto) {
 		
-		try (PreparedStatement statement = this.connection.prepareStatement(INSERT);){
-			
+		try (PreparedStatement statement = this.connection.prepareStatement(INSERT);){			
 			statement.setString(1, dto.getUsername());
 			statement.setString(2,  dto.getPassword());
 			statement.execute();
@@ -43,12 +40,11 @@ public class UsersDAO extends DataAccessObject<Users> {
 		 
 	}
 	
-
+	// Method used to update user details in the DB
 	@Override
 	public Users update(Users dto) {
 		Users users = null;
-		try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){
-			
+		try (PreparedStatement statement = this.connection.prepareStatement(UPDATE);){			
 			statement.setString(1, dto.getUsername());
 			statement.setString(2, dto.getPassword());
 			statement.setInt(3, dto.getId());
@@ -58,12 +54,11 @@ public class UsersDAO extends DataAccessObject<Users> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
-		}
-		
+		}		
 		return users;
 	}
 	
-
+	// Method used to find a user by their unique ID
 	@Override
 	public Users findById(int id) {
 		Users users = new Users();
@@ -80,12 +75,11 @@ public class UsersDAO extends DataAccessObject<Users> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
-		}
-		
+		}		
 		return users;
 	}
 	
-
+	// Method used to return all user details in the DB
 	@Override
 	public List<Users> findAll() {
 		List<Users> users = new ArrayList<Users>();
@@ -104,12 +98,11 @@ public class UsersDAO extends DataAccessObject<Users> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
-		}
-		
+		}		
 		return users;
 	}
 	
-
+	// Method used to delete a user from the DB
 	@Override
 	public void delete(int id) {
 		try (PreparedStatement statement = this.connection.prepareStatement(DELETE);){
@@ -123,34 +116,30 @@ public class UsersDAO extends DataAccessObject<Users> {
 		
 	}
 	
-	public boolean verifyUser(String uname, String pwd) {
+	// Method used to verify a users log in credentials
+	public boolean verifyUser(String uname, char[] pwd) {
 		
 		boolean flag = false;
 		
 		try (PreparedStatement statement = this.connection.prepareStatement(VERIFY);){
-			ResultSet rs = statement.executeQuery();
-			
+			ResultSet rs = statement.executeQuery();			
 			while (rs.next()) {
 				String username = rs.getString("Username");
-				String password = rs.getString("Password");
-				
+				String password = rs.getString("Password");				
 				if (username.equals(uname) && password.equals(pwd)) {
 					flag = true;
 				}
 				
-			}
-			
+			}			
 			return flag;
 			
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
 		}
-		
-		
+				
 	}
-		
-		
+				
 }
 
 
