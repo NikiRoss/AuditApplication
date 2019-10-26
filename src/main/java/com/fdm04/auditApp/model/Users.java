@@ -9,13 +9,11 @@ public class Users implements DataTransferObject{
 	private String password;
 	Audit audit;
 		
-	public Users() {
-		
-		this.id = id;
-		this.username = username;
-		this.password = password;
-	}
-
+	
+	  public Users() {
+	  
+	  this.id = id; this.username = username; this.password = password; }
+	 
 	public int getId() {
 		return id;
 	}

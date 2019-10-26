@@ -53,10 +53,9 @@ public class Login {
 		JButton loginBtn = new JButton("Login");
 		loginBtn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String uname = username.getText();				
-				char[] pwd = password.getPassword();				
-				boolean result = dao.verifyUser(uname, pwd);			
+				String uname = username.getText();
+				char[] pwd = password.getPassword();		
+				boolean result = dao.verifyUser(uname, new String(pwd));		
 				if (result) {
 					CreateAudit createAudit = new CreateAudit(connection);
 					createAudit.frame.setVisible(true);

@@ -10,6 +10,7 @@ import javax.swing.JTextField;
 import com.fdm04.auditApp.database.AuditDAO;
 import com.fdm04.auditApp.model.Audit;
 import com.fdm04.auditApp.model.Users;
+import com.fdm04.auditApp.util.AuditConstants;
 
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
@@ -57,7 +58,7 @@ public class CategoryHome {
 		/*
 		 * This button applies a major non conformance to the current audit score
 		 */		
-		JButton btnMajNonCon = new JButton("Maj Non Con");
+		JButton btnMajNonCon = new JButton(AuditConstants.MAJ_NON_CON);
 		btnMajNonCon.setForeground(Color.RED);
 		btnMajNonCon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -73,7 +74,7 @@ public class CategoryHome {
 		/*
 		 * This button applies a minor non conformance to the current audit score
 		 */
-		JButton btnMinNonCon = new JButton("Min Non Con");
+		JButton btnMinNonCon = new JButton(AuditConstants.MIN_NON_CON);
 		btnMinNonCon.setForeground(Color.ORANGE);
 		btnMinNonCon.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				
@@ -89,7 +90,7 @@ public class CategoryHome {
 		/*
 		 * This button applies a negative observation to the current audit score
 		 */	
-		JButton btnNegObs = new JButton("Neg Obs");
+		JButton btnNegObs = new JButton(AuditConstants.NEGATIVE_OBS);
 		btnNegObs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {			
 				users = new Users();
@@ -104,7 +105,7 @@ public class CategoryHome {
 		/*
 		 * This button applies a positive observation to the current audit score
 		 */
-		JButton btnPosObs = new JButton("Pos Obs");
+		JButton btnPosObs = new JButton(AuditConstants.POSITIVE_OBS);
 		btnPosObs.setForeground(Color.GREEN);
 		btnPosObs.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {				

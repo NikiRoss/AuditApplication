@@ -3,6 +3,7 @@ package com.fdm04.auditApp.model;
 import java.util.ArrayList;
 
 import com.fdm04.auditApp.database.util.DataTransferObject;
+import com.fdm04.auditApp.util.AuditConstants;
 
 public class Audit implements DataTransferObject{
 	
@@ -16,16 +17,18 @@ public class Audit implements DataTransferObject{
 
 	public Audit() {
 		
-		this.id = id;
-		this.score = score;
-		this.projectName = projectName;
-		this.projectManager = projectManager;
-		this.auditor = auditor;
-		this.summary = summary;
-		categories.add("Access/ Egress");
-		categories.add("Work at Height");
-		categories.add("Traffic Management");
-		categories.add("RAMS");
+		/*
+		 * this.id = id; this.score = score; this.projectName = projectName;
+		 * this.projectManager = projectManager; this.auditor = auditor; this.summary =
+		 * summary;
+		 */
+		categories.add(AuditConstants.ACCESS_EGRESS);
+		categories.add(AuditConstants.COSHH);
+		categories.add(AuditConstants.FIRST_AID);
+		categories.add(AuditConstants.RAMS);
+		categories.add(AuditConstants.TEMP_WORKS);
+		categories.add(AuditConstants.WORK_AT_HEIGHT);
+
 	}
 
 	public int getId() {

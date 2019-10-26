@@ -50,7 +50,7 @@ public class AuditHome {
 		 * the button name, positioning within the frame 
 		 * and action performed when pressed
 		 */		
-		final JButton btnAccessEgress = new JButton("Access/ Egress");
+		final JButton btnAccessEgress = new JButton(AuditConstants.ACCESS_EGRESS);
 		btnAccessEgress.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String btnName = btnAccessEgress.getText();
@@ -67,7 +67,7 @@ public class AuditHome {
 		 * the button name, positioning within the frame 
 		 * and action performed when pressed
 		 */
-		final JButton btnCOSHH = new JButton("COSHH");
+		final JButton btnCOSHH = new JButton(AuditConstants.COSHH);
 		btnCOSHH.addActionListener(new ActionListener() {		
 			public void actionPerformed(ActionEvent e) {
 				String btnName = btnCOSHH.getText();
@@ -84,7 +84,7 @@ public class AuditHome {
 		 * the button name, positioning within the frame 
 		 * and action performed when pressed
 		 */
-		final JButton btnFirstAid = new JButton("First Aid");
+		final JButton btnFirstAid = new JButton(AuditConstants.FIRST_AID);
 		btnFirstAid.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String btnName = btnFirstAid.getText();
@@ -135,7 +135,7 @@ public class AuditHome {
 		 * the button name, positioning within the frame 
 		 * and action performed when pressed
 		 */
-		final JButton btnTempWorks = new JButton("Work At Heigh");
+		final JButton btnTempWorks = new JButton(AuditConstants.WORK_AT_HEIGHT);
 		btnTempWorks.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				String btnName = btnTempWorks.getText();

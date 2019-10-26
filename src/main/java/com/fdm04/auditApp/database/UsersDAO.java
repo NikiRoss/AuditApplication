@@ -117,7 +117,7 @@ public class UsersDAO extends DataAccessObject<Users> {
 	}
 	
 	// Method used to verify a users log in credentials
-	public boolean verifyUser(String uname, char[] pwd) {
+	public boolean verifyUser(String uname, String pwd) {
 		
 		boolean flag = false;
 		
