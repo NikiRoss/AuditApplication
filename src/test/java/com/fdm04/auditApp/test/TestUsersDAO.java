@@ -7,7 +7,6 @@ import java.sql.SQLException;
 import java.util.Random;
 
 import org.junit.Test;
-
 import com.fdm04.auditApp.database.DBconnectionManager;
 import com.fdm04.auditApp.database.UsersDAO;
 import com.fdm04.auditApp.model.Users;
@@ -16,9 +15,7 @@ public class TestUsersDAO {
 	
     DBconnectionManager dbcmg = new DBconnectionManager("localhost:3306", "AuditApplication", "root", "efil4zaggin");
 	
-
-	// Ask Aravind about this method. Currently requires me to "predict" the ID
-	// of a newly created user in order to return their details from the DB
+    //Random generator used for this test as usernames must be unique
 	@Test  
 	public void create_New_User() {
 		
@@ -26,12 +23,15 @@ public class TestUsersDAO {
             Connection connection = dbcmg.getConnection();
             UsersDAO dao = new UsersDAO(connection);
             Users users = new Users();
-            users.setUsername("testuser_name");
+            Random random = new Random();
+            int ran1 = random.nextInt(500);
+            String str1 = Integer.toString(ran1); 
+            users.setUsername("test" + str1);
             users.setPassword("test_PasSw0rD");
             dao.create(users);
-            users = dao.findById(13);
+            dao.getID(users);
             String result = users.getUsername();
-            assertEquals("testuser_name", result);
+            assertEquals("test" + str1, result);
 
         }catch (SQLException e){
             e.printStackTrace();
@@ -39,6 +39,7 @@ public class TestUsersDAO {
         }
 	}
 
+	// Random generator used to create new update each time test is run
 	@Test  
 	public void update_User() {
 		
@@ -46,11 +47,14 @@ public class TestUsersDAO {
             Connection connection = dbcmg.getConnection();
             UsersDAO usersDAO = new UsersDAO(connection);
             Users users = new Users();
+            Random random = new Random();
+            int ran1 = random.nextInt(500);
+            String str1 = Integer.toString(ran1);
             users = usersDAO.findById(1);
-            users.setPassword("NEWPASSWORD");
+            users.setUsername("NEW" + str1);
             usersDAO.update(users);
-            String result = users.getPassword();
-            assertEquals(result, "NEWPASSWORD");
+            String result = users.getUsername();
+            assertEquals(result, "NEW" + str1);
 
         }catch (SQLException e){
             e.printStackTrace();

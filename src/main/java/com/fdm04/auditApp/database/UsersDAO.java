@@ -17,6 +17,7 @@ public class UsersDAO extends DataAccessObject<Users> {
 	private static String ALL = "SELECT * FROM Users";
 	private static String DELETE = "DELETE FROM Users WHERE id = ?";
 	private static String VERIFY = "SELECT Username, Password FROM Users";
+	private static String GETID = "SELECT id, Username, Password FROM Users WHERE Username = ? AND Password = ? ORDER BY id DESC LIMIT 1";	
 	
 	public UsersDAO(Connection connection) {
 		super(connection);
@@ -136,8 +137,27 @@ public class UsersDAO extends DataAccessObject<Users> {
 		} catch (SQLException e) {
 			e.printStackTrace();
 			throw new RuntimeException(e);
+		}			
+	}
+	
+	//This method is only ever used for the purpose of the "create user" Junit test
+	public Users getID(Users users) {
+		
+		try (PreparedStatement statement = this.connection.prepareStatement(GETID);){
+			statement.setString(1, users.getUsername());
+			statement.setString(2, users.getPassword());
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+            	users.setId(rs.getInt("id"));
+            	users.setUsername(rs.getString("Username"));
+            	users.setPassword(rs.getString("Password"));
+            }	
+            
+		}catch (SQLException e) {
+			e.printStackTrace();
+			throw new RuntimeException(e);
 		}
-				
+			return users;
 	}
 				
 }

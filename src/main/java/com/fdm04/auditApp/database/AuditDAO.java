@@ -18,7 +18,7 @@ public class AuditDAO extends DataAccessObject<Audit>{
 	private static String ALL = "SELECT * FROM Audits";
 	private static String DELETE = "DELETE FROM Audits WHERE id = ?";
 	private static String GETID = "SELECT id, ProjectName, ProjectManager, Auditor, Summary, Score FROM Audits"
-			+ " WHERE ProjectName = ? AND ProjectManager = ? AND Auditor = ? order by id desc limit 1";	
+								+ " WHERE ProjectName = ? AND ProjectManager = ? AND Auditor = ? ORDER BY id DESC LIMIT 1";	
 	
 	public AuditDAO(Connection connection) {
 		super(connection);

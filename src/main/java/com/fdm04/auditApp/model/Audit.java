@@ -17,18 +17,12 @@ public class Audit implements DataTransferObject{
 
 	public Audit() {
 		
-		/*
-		 * this.id = id; this.score = score; this.projectName = projectName;
-		 * this.projectManager = projectManager; this.auditor = auditor; this.summary =
-		 * summary;
-		 */
 		categories.add(AuditConstants.ACCESS_EGRESS);
 		categories.add(AuditConstants.COSHH);
 		categories.add(AuditConstants.FIRST_AID);
 		categories.add(AuditConstants.RAMS);
 		categories.add(AuditConstants.TEMP_WORKS);
 		categories.add(AuditConstants.WORK_AT_HEIGHT);
-
 	}
 
 	public int getId() {

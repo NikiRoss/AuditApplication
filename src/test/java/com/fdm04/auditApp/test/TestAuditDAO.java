@@ -15,8 +15,7 @@ public class TestAuditDAO {
 	
     DBconnectionManager dbcmg = new DBconnectionManager("localhost:3306", "AuditApplication", "root", "efil4zaggin");
 
-	// Ask Aravind about this method. Currently requires me to "predict" the ID
-		// of a newly created user in order to return their details from the DB
+    
 		@Test  
 		public void create_New_Audit() {
 			
