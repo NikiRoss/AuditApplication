@@ -11,7 +11,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.fdm04.auditApp.database.AuditDAO;
+import com.fdm04.auditApp.dao.AuditDAO;
 import com.fdm04.auditApp.model.Audit;
 
 public class CreateAudit {

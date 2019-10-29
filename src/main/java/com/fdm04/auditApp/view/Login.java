@@ -6,7 +6,7 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import com.fdm04.auditApp.database.UsersDAO;
+import com.fdm04.auditApp.dao.UsersDAO;
 import com.fdm04.auditApp.database.util.DBconnectionManager;
 
 import javax.swing.JPasswordField;

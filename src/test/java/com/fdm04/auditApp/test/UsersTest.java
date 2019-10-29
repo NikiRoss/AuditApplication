@@ -45,7 +45,8 @@ public class UsersTest {
 		Audit a = new Audit();
         Users user = new Users();
         user.setAudit(a);
-        double result = user.applyMajorNonCon(a);
+        user.applyMajorNonCon(a);
+        double result = a.getScore();
         assertEquals(88.0, result, 0);
     }
 	
@@ -54,7 +55,8 @@ public class UsersTest {
 		Audit a = new Audit();
         Users user = new Users();
         user.setAudit(a);
-        double result = user.applyMinorNonCon(a);
+        user.applyMinorNonCon(a);
+        double result = a.getScore();
         assertEquals(91.0, result, 0);
     }
 	
@@ -63,7 +65,8 @@ public class UsersTest {
 		Audit a = new Audit();
         Users user = new Users();
         user.setAudit(a);
-        double result = user.applyNegativeObservation(a);
+        user.applyNegativeObservation(a);
+        double result = a.getScore();
         assertEquals(93.0, result, 0);
     }
 	
@@ -73,7 +76,8 @@ public class UsersTest {
 		a.setScore(50.0);
         Users user = new Users();
         user.setAudit(a);
-        double result = user.applyPositiveObservation(a);
+        user.applyPositiveObservation(a);
+        double result = a.getScore();
         assertEquals(54.0, result, 0);
     }
 	

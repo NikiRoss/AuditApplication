@@ -1,4 +1,4 @@
-package com.fdm04.auditApp.database;
+package com.fdm04.auditApp.dao;
 
 import java.sql.Connection;
 import java.util.ArrayList;

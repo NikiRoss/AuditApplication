@@ -7,7 +7,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 
-import com.fdm04.auditApp.database.AuditDAO;
+import com.fdm04.auditApp.dao.AuditDAO;
 import com.fdm04.auditApp.model.Audit;
 import com.fdm04.auditApp.model.Users;
 import com.fdm04.auditApp.util.AuditConstants;
@@ -144,7 +144,7 @@ public class CategoryHome {
 		
 		// Label displays auditor name in top left corner of frame
 		JLabel lblAuditorName = new JLabel(audit.getAuditor());
-		lblAuditorName.setBounds(39, 31, 61, 16);
+		lblAuditorName.setBounds(39, 31, 117, 16);
 		frame.getContentPane().add(lblAuditorName);
 		
 		// Label displays audit score in top right corner of frame

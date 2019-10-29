@@ -5,7 +5,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JButton;
-import com.fdm04.auditApp.database.AuditDAO;
+
+import com.fdm04.auditApp.dao.AuditDAO;
 import com.fdm04.auditApp.model.Audit;
 import com.fdm04.auditApp.model.Users;
 import com.fdm04.auditApp.util.AuditConstants;
@@ -149,14 +150,14 @@ public class AuditHome {
 		
 		// This label displays the current audit score in the top right hand corner of the frame
 		lblAuditScore = new JLabel("");
-		lblAuditScore.setBounds(315, 6, 129, 16);
+		lblAuditScore.setBounds(315, 6, 117, 16);
 		frame.getContentPane().add(lblAuditScore);
 		double score = audit.getScore();
 		lblAuditScore.setText("Audit score: " + String.valueOf(score) + "%");
 		
 		// This label displays the auditors name in the top left hand corner of the frame
 		lblAuditorName = new JLabel("");
-		lblAuditorName.setBounds(15, 6, 129, 16);
+		lblAuditorName.setBounds(15, 6, 191, 16);
 		frame.getContentPane().add(lblAuditorName);
 		String auditor = audit.getAuditor();
 		lblAuditorName.setText("Auditor: " + auditor);

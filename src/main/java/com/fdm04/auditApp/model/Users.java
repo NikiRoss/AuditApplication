@@ -2,7 +2,7 @@ package com.fdm04.auditApp.model;
 
 import com.fdm04.auditApp.database.util.DataTransferObject;
 
-public class Users implements DataTransferObject{
+public class Users implements DataTransferObject, Factors{
 	
 	private int id;
 	private String username;
@@ -41,82 +41,77 @@ public class Users implements DataTransferObject{
 	public void setAudit(Audit audit) {
 		this.audit = audit;
 	}
+	
+    //implemented method from Factors interface for applying Major Non Conformance to Audit
+	@Override
+	public Audit applyMajorNonCon(Audit audit) {
 		
-	// Method used to apply a major non conformance to the audit score
-	public double applyMajorNonCon(Audit audit) {
-		
-		double score = audit.getScore();
-		double majorNonCon = 12;
-		double newScore;
-		if (score <= 15) {
-			System.out.println("Stop all work on site");
+		double auditScore = audit.getScore();
+        double factor = 12.0;
+        double newAuditScore;
+        if (auditScore <= 15) {
+			System.out.println("Stop the audit and shut down the site");
 			
-		}		
-		else {
-			newScore = majorNonCon * score / 100;
-			score = score - newScore;
-			audit.setScore(score);			
-		}		
-		return score;		
+        }else {
+        	newAuditScore = factor * auditScore /100;
+            audit.setScore(auditScore - newAuditScore);
+        } 
+        return audit;
 	}
 	
-	// Method used to apply a minor non conformance to the audit score
-	public double applyMinorNonCon(Audit audit) {
+    //implemented method from Factors interface for applying Minor Non Conformance to Audit
+	@Override
+	public Audit applyMinorNonCon(Audit audit) {
 		
-		double score = audit.getScore();
-		double minorNonCon = 9;
-		double newScore;
-		
-		if (score <= 15) {
-			System.out.println("Stop all work on site");
+		double auditScore = audit.getScore();
+        double factor = 9.0;
+        double newAuditScore;
+        if (auditScore <= 15) {
+			System.out.println("Stop the audit and shut down the site");
 			
-		}		
-		else {
-			newScore = minorNonCon * score / 100;
-			score = score - newScore;			
-			audit.setScore(score);			
-		}		
-		return score;		
+        }else {
+        	newAuditScore = factor * auditScore /100;
+            audit.setScore(auditScore - newAuditScore);
+        } 
+        return audit;
 	}
 	
-	// Method used to apply a negative observation to the audit score
-	public double applyNegativeObservation(Audit audit) {
+    //implemented method from Factors interface for applying Negative Observation to Audit
+	@Override
+	public Audit applyNegativeObservation(Audit audit) {
 		
-		double score = audit.getScore();
-		double negativeObservation = 7;
-		double newScore;
-		
-		if (score <= 15) {
-			System.out.println("Stop all work on site");
+		double auditScore = audit.getScore();
+        double factor = 7.0;
+        double newAuditScore;
+        if (auditScore <= 15) {
+			System.out.println("Stop the audit and shut down the site");
 			
-		}	
-		else {
-			newScore = negativeObservation * score / 100;
-			score = score - newScore;			
-			audit.setScore(score);			
-		}		
-		return score;		
+        }else {
+        	newAuditScore = factor * auditScore /100;
+            audit.setScore(auditScore - newAuditScore);
+        } 
+        return audit;
 	}
 	
-	// Method used to apply a positive observation to the audit score
-	public double applyPositiveObservation(Audit audit) {
+    //implemented method from Factors interface for applying Positive Observation to Audit
+	@Override
+	public Audit applyPositiveObservation(Audit audit) {
 		
-		double score = audit.getScore();
-		double positiveObservation = 4;		
-		if (score >= 96) {
-			System.out.println("Apply positive observation at the end of the audit");
+		double auditScore = audit.getScore();
+		if (auditScore >= 96) {
+			System.out.println("Apply positive observation at end of audit");
 			
-		}		
-		else {
-			score = positiveObservation + score;			
-			audit.setScore(score);			
-		}		
-		return score;		
+		}else {
+			audit.setScore(auditScore + 4);
+		}     
+        return audit;
 	}
+		
 	
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", audit=" + audit + "]";
 	}
+
 	
 }

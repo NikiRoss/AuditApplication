@@ -80,11 +80,13 @@ public class Audit implements DataTransferObject{
 	public void setCategories(ArrayList<String> categories) {
 		this.categories = categories;
 	}
+	
 
 	@Override
 	public String toString() {
 		return "Audit [id=" + id + ", score=" + score + ", projectName=" + projectName + ", projectManager="
 				+ projectManager + ", auditor=" + auditor + ", summary=" + summary + ", categories=" + categories + "]";
 	}
+
 	
 }

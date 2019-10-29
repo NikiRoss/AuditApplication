@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.fdm04.auditApp.database.AuditDAO;
+import com.fdm04.auditApp.dao.AuditDAO;
 import com.fdm04.auditApp.database.util.DBconnectionManager;
 import com.fdm04.auditApp.model.Audit;
 

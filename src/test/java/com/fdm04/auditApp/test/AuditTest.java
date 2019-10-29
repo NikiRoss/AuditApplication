@@ -89,7 +89,8 @@ public class AuditTest {
 		Audit audit = new Audit();
         Users user = new Users();
         user.setAudit(audit);
-        double result = user.applyPositiveObservation(audit);
+        user.applyPositiveObservation(audit);
+        double result = audit.getScore();
         assertEquals(100, result, 0);
     }
 	
@@ -99,7 +100,8 @@ public class AuditTest {
         Users user = new Users();
         user.setAudit(audit);
         audit.setScore(12.0);    
-        double result = user.applyMajorNonCon(audit);
+        user.applyMajorNonCon(audit);
+        double result = audit.getScore();
         assertEquals(12.0, result, 0);
     }
 

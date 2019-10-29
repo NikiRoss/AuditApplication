@@ -7,7 +7,7 @@ import java.sql.Connection;
 import javax.swing.JFrame;
 import javax.swing.JTextArea;
 
-import com.fdm04.auditApp.database.AuditDAO;
+import com.fdm04.auditApp.dao.AuditDAO;
 import com.fdm04.auditApp.model.Audit;
 
 import javax.swing.JLabel;
@@ -75,7 +75,7 @@ public class Summary {
 		
 		// This label displays the auditors name in the top left hand corner of the frame
 		lblAuditorName = new JLabel("");
-		lblAuditorName.setBounds(15, 6, 129, 16);
+		lblAuditorName.setBounds(15, 6, 182, 16);
 		frame.getContentPane().add(lblAuditorName);
 		String auditorName = audit.getAuditor();
 		lblAuditorName.setText("Auditor: " + auditorName);
