@@ -63,17 +63,17 @@ public class AuditTest {
 	@Test
     public void get_Second_Category(){
 		
-        Audit audit = new Audit();
+		Audit audit = new Audit();
         String result = audit.getCategories().get(1);
-        assertEquals(result, "Work at Height");
+        assertEquals(result, "COSHH");
     }
 	
 	@Test
-    public void get_Third_Category(){
-		
+    public void get_Third_Category() {
+        
         Audit audit = new Audit();
         String result = audit.getCategories().get(2);
-        assertEquals(result, "Traffic Management");
+        assertEquals(result, "First Aid");
     }
 	
 	@Test

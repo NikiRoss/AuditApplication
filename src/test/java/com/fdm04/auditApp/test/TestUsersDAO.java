@@ -7,8 +7,9 @@ import java.sql.SQLException;
 import java.util.Random;
 
 import org.junit.Test;
-import com.fdm04.auditApp.database.DBconnectionManager;
+
 import com.fdm04.auditApp.database.UsersDAO;
+import com.fdm04.auditApp.database.util.DBconnectionManager;
 import com.fdm04.auditApp.model.Users;
 
 public class TestUsersDAO {

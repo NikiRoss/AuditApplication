@@ -1,4 +1,4 @@
-package com.fdm04.auditApp.gui;
+package com.fdm04.auditApp.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;

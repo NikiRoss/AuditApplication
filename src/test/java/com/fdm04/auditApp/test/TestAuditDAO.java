@@ -7,8 +7,8 @@ import java.sql.SQLException;
 
 import org.junit.Test;
 
-import com.fdm04.auditApp.database.DBconnectionManager;
 import com.fdm04.auditApp.database.AuditDAO;
+import com.fdm04.auditApp.database.util.DBconnectionManager;
 import com.fdm04.auditApp.model.Audit;
 
 public class TestAuditDAO {
@@ -25,6 +25,7 @@ public class TestAuditDAO {
 	            Audit audit = new Audit();
 	            audit.setProjectName("Test_ Name");
 	            audit.setProjectManager("TestManager");
+	            audit.setAuditor("Test_Auditor");
 	            dao.create(audit);
 	            audit = dao.getID(audit);
 	            String result = audit.getProjectName();
@@ -89,6 +90,4 @@ public class TestAuditDAO {
 	            throw new RuntimeException();
 	        }
 		}
-		 
-
 }

@@ -7,7 +7,7 @@ public class Users implements DataTransferObject{
 	private int id;
 	private String username;
 	private String password;
-	Audit audit;
+	private Audit audit;
 		
 	 
 	public int getId() {

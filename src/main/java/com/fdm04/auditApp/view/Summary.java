@@ -1,5 +1,6 @@
-package com.fdm04.auditApp.gui;
+package com.fdm04.auditApp.view;
 
+import java.awt.Color;
 import java.awt.EventQueue;
 import java.sql.Connection;
 
@@ -21,9 +22,8 @@ public class Summary {
 	public JFrame frame;
 	public Audit audit;
 	public AuditDAO dao;
-	
-	
-
+	public JLabel lblAuditScore;
+	public JLabel lblAuditorName;
 	
 	public Summary() { }
 	
@@ -34,29 +34,17 @@ public class Summary {
 		initialize();
 	}
 	
-
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setBounds(100, 100, 375, 300);
+		frame.setSize(550, 750);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.getContentPane().setBackground(Color.lightGray);
 		frame.getContentPane().setLayout(null);
 		
 		final JTextArea summary = new JTextArea();
 		summary.setBounds(74, 91, 300, 132);
 		frame.getContentPane().add(summary);
-		
-		JLabel lblAuditScore = new JLabel("");
-		lblAuditScore.setBounds(313, 19, 61, 16);
-		frame.getContentPane().add(lblAuditScore);
-		double score = audit.getScore();
-		lblAuditScore.setText("Audit score: " + String.valueOf(score) + "%");
-		
-		
-		JLabel lblAuditorName = new JLabel("");
-		lblAuditorName.setBounds(24, 19, 61, 16);
-		frame.getContentPane().add(lblAuditorName);
-		String auditor = audit.getAuditor();
-		lblAuditorName.setText("Auditor: " + auditor);
 		
 		JButton btnSubmit = new JButton("Submit");
 		btnSubmit.addActionListener(new ActionListener() {
@@ -77,11 +65,22 @@ public class Summary {
 		JLabel lblSummary = new JLabel("Summary");
 		lblSummary.setBounds(186, 63, 61, 16);
 		frame.getContentPane().add(lblSummary);
+		
+		// This label displays the score in the top right hand corner of the frame
+		lblAuditScore = new JLabel("");
+		lblAuditScore.setBounds(315, 6, 129, 16);
+		frame.getContentPane().add(lblAuditScore);
+		double auditScore = audit.getScore();
+		lblAuditScore.setText("Audit score: " + String.valueOf(auditScore) + "%");
+		
+		// This label displays the auditors name in the top left hand corner of the frame
+		lblAuditorName = new JLabel("");
+		lblAuditorName.setBounds(15, 6, 129, 16);
+		frame.getContentPane().add(lblAuditorName);
+		String auditorName = audit.getAuditor();
+		lblAuditorName.setText("Auditor: " + auditorName);
 	}
-	
-	
-	
-	
+		
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {

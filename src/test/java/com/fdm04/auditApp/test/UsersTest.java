@@ -28,6 +28,19 @@ public class UsersTest {
     }
 	
 	@Test
+	public void getAudit() {
+		
+		Users user = new Users();
+		Audit a = new Audit();
+		a.setProjectName("Test Project Name");
+		a.setProjectManager("Test Project Manager");
+		a.setAuditor("Test Auditor");
+		user.setAudit(a);
+		Audit result = user.getAudit();
+		assertEquals(result, a);		
+	}
+	
+	@Test
 	public void apply_Major_Non_Conformance_To_Audit(){
 		Audit a = new Audit();
         Users user = new Users();

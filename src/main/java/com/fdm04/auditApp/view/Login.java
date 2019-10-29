@@ -1,4 +1,4 @@
-package com.fdm04.auditApp.gui;
+package com.fdm04.auditApp.view;
 
 import java.awt.Color;
 import java.awt.EventQueue;
@@ -6,8 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JTextField;
 
-import com.fdm04.auditApp.database.DBconnectionManager;
 import com.fdm04.auditApp.database.UsersDAO;
+import com.fdm04.auditApp.database.util.DBconnectionManager;
 
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
